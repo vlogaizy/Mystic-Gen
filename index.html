@@ -238,12 +238,54 @@
         const outputArea = document.getElementById('output');
         const toastEl = document.getElementById('toast');
 
+window.onload=()=>{
+
+
+if(
+localStorage.getItem("lazyAIUnlocked")
+==="yes"
+){
+
+loginScreen.style.display="none";
+
+appContainer.classList.remove('hidden');
+
+appContainer.style.opacity="1";
+
+}
+
+
+
+let savedPrompts = JSON.parse(
+localStorage.getItem("savedPrompts") || "[]"
+);
+
+
+if(savedPrompts.length>0){
+
+outputArea.value =
+savedPrompts[savedPrompts.length-1];
+
+}
+
+
+};
+
         // -------------------------
         // 1. UI LOGIN LOGIC
         // -------------------------
         function unlock() {
             // Placeholder password check for UI demonstration
-            if (passwordInput.value === "1111" || passwordInput.value === "") {
+
+if (passwordInput.value === "1111" || passwordInput.value === "") {
+
+localStorage.setItem(
+"lazyAIUnlocked",
+"yes"
+);
+
+errorMsg.classList.add('hidden');
+
                 errorMsg.classList.add('hidden');
                 passwordInput.classList.remove('border-pink-500', 'bg-pink-500/10');
                 
@@ -1269,18 +1311,24 @@ GENERATE PROMPT
 function generatePrompt(){
 
 
-let history=JSON.parse(
-
-localStorage.getItem("eggHistory")||"[]"
-
+localStorage.setItem(
+"eggHistory",
+JSON.stringify(history)
 );
 
 
+let savedPrompts = JSON.parse(
+localStorage.getItem("savedPrompts") || "[]"
+);
 
-let result;
 
-let key;
+savedPrompts.push(output.value);
 
+
+localStorage.setItem(
+"savedPrompts",
+JSON.stringify(savedPrompts)
+);
 
 
 do{
