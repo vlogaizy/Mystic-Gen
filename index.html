@@ -1,625 +1,391 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-<title>Promt Gen</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-
-*{
-box-sizing:border-box;
-}
-
-body{
-margin:0;
-height:100vh;
-overflow:hidden;
-font-family:Segoe UI,sans-serif;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-
-background:
-radial-gradient(circle at 20% 20%,#3b0764,transparent 35%),
-radial-gradient(circle at 80% 70%,#003b4d,transparent 40%),
-#010107;
-}
-
-
-#network{
-position:absolute;
-inset:0;
-z-index:0;
-}
-
-
-#login{
-position:fixed;
-inset:0;
-z-index:100;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-background:
-linear-gradient(
-135deg,
-#020204,
-#15002b,
-#002b3a
-);
-}
-
-
-.login-box{
-
-width:90%;
-max-width:400px;
-
-padding:40px;
-
-text-align:center;
-
-border-radius:30px;
-
-background:
-rgba(255,255,255,.08);
-
-backdrop-filter:blur(25px);
-
-border:
-1px solid rgba(255,255,255,.3);
-
-}
-
-
-.login-box input{
-
-width:100%;
-
-padding:15px;
-
-margin:20px 0;
-
-border-radius:15px;
-
-border:1px solid #555;
-
-background:black;
-
-color:white;
-
-text-align:center;
-
-font-size:18px;
-
-}
-
-
-#error{
-display:none;
-color:#ff6666;
-}
-
-
-
-.container{
-
-position:relative;
-
-z-index:5;
-
-width:90%;
-
-max-width:950px;
-
-padding:40px;
-
-border-radius:35px;
-
-background:
-rgba(255,255,255,.08);
-
-backdrop-filter:blur(30px);
-
-border:
-1px solid rgba(255,255,255,.2);
-
-}
-
-
-
-h1{
-
-text-align:center;
-
-font-size:45px;
-
-background:
-linear-gradient(
-90deg,
-white,
-#8be9fd,
-#d8b4fe
-);
-
--webkit-background-clip:text;
-
-color:transparent;
-
-}
-
-
-
-.subtitle{
-
-text-align:center;
-
-opacity:.7;
-
-}
-
-
-
-.buttons{
-
-display:flex;
-
-justify-content:center;
-
-gap:15px;
-
-margin:25px;
-
-}
-
-
-
-button{
-
-padding:16px 40px;
-
-border-radius:18px;
-
-cursor:pointer;
-
-font-size:17px;
-
-color:white;
-
-font-weight:bold;
-
-background:
-rgba(255,255,255,.12);
-
-border:
-1px solid rgba(255,255,255,.3);
-
-transition:.3s;
-
-}
-
-
-
-button:hover{
-
-transform:translateY(-5px);
-
-background:
-linear-gradient(
-135deg,
-#7c3aed,
-#0891b2
-);
-
-}
-
-
-
-textarea{
-
-width:100%;
-
-height:380px;
-
-padding:20px;
-
-border-radius:25px;
-
-background:
-rgba(0,0,0,.6);
-
-color:white;
-
-border:1px solid #555;
-
-font-size:16px;
-
-resize:none;
-
-}
-
-
-
-.footer{
-
-position:absolute;
-
-bottom:20px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-z-index:10;
-
-letter-spacing:4px;
-
-opacity:.8;
-
-}
-
-
-
-@media(max-width:700px){
-
-.container{
-
-width:95%;
-
-padding:25px;
-
-}
-
-
-h1{
-
-font-size:30px;
-
-}
-
-
-.buttons{
-
-flex-direction:column;
-
-}
-
-
-button{
-
-width:100%;
-
-}
-
-
-textarea{
-
-height:280px;
-
-}
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Magic Egg AI - Liquid Glass Design</title>
+    
+    <!-- Tailwind CSS for layout and utilities -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #8be9fd;
+            --secondary: #bd93f9;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #070514; /* Deep dark background */
+            color: white;
+            overflow: hidden; /* Prevent scrolling for app-like feel */
+            margin: 0;
+        }
+
+        /* -------------------------
+           LIQUID GLASS EFFECT
+           ------------------------- */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.5),
+                inset 0 0 20px rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-input {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(139, 233, 253, 0.15);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-input:focus {
+            border-color: var(--primary);
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 0 25px rgba(139, 233, 253, 0.2),
+                inset 0 8px 20px rgba(0, 0, 0, 0.4);
+            outline: none;
+        }
+
+        /* -------------------------
+           CUSTOM SCROLLBAR
+           ------------------------- */
+        textarea::-webkit-scrollbar { width: 8px; }
+        textarea::-webkit-scrollbar-track { background: transparent; }
+        textarea::-webkit-scrollbar-thumb { 
+            background: rgba(189, 147, 249, 0.4); 
+            border-radius: 10px; 
+        }
+        textarea::-webkit-scrollbar-thumb:hover { background: rgba(189, 147, 249, 0.8); }
+
+        /* -------------------------
+           TYPOGRAPHY & BUTTONS
+           ------------------------- */
+        .text-gradient {
+            background: linear-gradient(to right, #8be9fd, #bd93f9, #ff79c6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-magic {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .btn-magic::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .btn-magic:hover::before { left: 100%; }
+        .btn-magic:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(189, 147, 249, 0.4);
+        }
+        .btn-magic:active { transform: translateY(1px); }
+
+        /* -------------------------
+           ANIMATIONS (Blobs & Floating)
+           ------------------------- */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        .floating { animation: float 4s ease-in-out infinite; }
+
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            33% { transform: translate(30px, -50px) scale(1.1); border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+            66% { transform: translate(-20px, 20px) scale(0.9); border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+            100% { transform: translate(0px, 0px) scale(1); border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+        }
+        .animate-blob { animation: blob 10s infinite alternate ease-in-out; }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+
+        /* Canvas Background Layer */
+        #network {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Custom Toast Notification */
+        #toast {
+            transform: translateY(100px) translateX(-50%);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        #toast.show {
+            transform: translateY(0) translateX(-50%);
+            opacity: 1;
+        }
+    </style>
 </head>
-
-
-<body>
-
-
-<div id="login">
-
-<div class="login-box">
-
-<h1>
-🔐 LAZY AI
-</h1>
-
-<p>
-Enter Password
-</p>
-
-
-<input 
-id="password"
-type="password"
-placeholder="Password">
-
-
-<button onclick="unlock()">
-UNLOCK
-</button>
-
-
-<div id="error">
-Wrong Password
-</div>
-
-
-</div>
-
-</div>
-
-
-
-<canvas id="network"></canvas>
-
-
-<div class="container">
-
-
-<h1>
-🥚 Dark Magic Egg AI 🥚
-</h1>
-
-
-<div class="subtitle">
-Infinite Fantasy Prompt Generator
-</div>
-
-
-<div class="buttons">
-
-<button onclick="generatePrompt()">
-🎲 Generate
-</button>
-
-
-<button onclick="copyPrompt()">
-📋 Copy
-</button>
-
-
-</div>
-
-
-<textarea id="output"></textarea>
-
-
-</div>
-
-
-
-<div class="footer">
-Create by Lazy
-</div>
-
-
-<script>
-
-/* =====================
-LOGIN
-===================== */
-
-function unlock(){
-
-let p=password.value;
-
-if(p==="1111"){
-
-localStorage.setItem(
-"lazyAIUnlocked",
-"yes"
-);
-
-login.style.display="none";
-
-}
-
-else{
-
-error.style.display="block";
-
-}
-
-}
-
-
-window.onload=()=>{
-
-if(
-localStorage.getItem("lazyAIUnlocked")
-==="yes"
-){
-
-login.style.display="none";
-
-}
-
-};
-
-
-
-password.onkeypress=e=>{
-
-if(e.key==="Enter")
-unlock();
-
-};
-
-
-
-
-
-/* =====================
-NETWORK
-===================== */
-
-
-const canvas=document.getElementById("network");
-
-const ctx=canvas.getContext("2d");
-
-
-canvas.width=innerWidth;
-
-canvas.height=innerHeight;
-
-
-let mouse={x:null,y:null};
-
-
-onmousemove=e=>{
-
-mouse.x=e.clientX;
-
-mouse.y=e.clientY;
-
-};
-
-
-
-class Node{
-
-
-constructor(){
-
-this.x=Math.random()*canvas.width;
-
-this.y=Math.random()*canvas.height;
-
-
-this.vx=(Math.random()-.5)*.5;
-
-this.vy=(Math.random()-.5)*.5;
-
-}
-
-
-
-update(){
-
-this.x+=this.vx;
-
-this.y+=this.vy;
-
-}
-
-
-
-draw(){
-
-ctx.beginPath();
-
-ctx.arc(
-this.x,
-this.y,
-2,
-0,
-Math.PI*2
-);
-
-
-ctx.fillStyle="#8be9fd";
-
-
-ctx.fill();
-
-}
-
-
-}
-
-
-
-
-let nodes=[];
-
-
-for(let i=0;i<100;i++){
-
-nodes.push(new Node());
-
-}
-
-
-
-
-function animate(){
-
-
-ctx.clearRect(
-0,
-0,
-canvas.width,
-canvas.height
-);
-
-
-
-nodes.forEach(n=>{
-
-n.update();
-
-n.draw();
-
-});
-
-
-
-
-for(let a=0;a<nodes.length;a++){
-
-
-for(let b=a;b<nodes.length;b++){
-
-
-let dx=nodes[a].x-nodes[b].x;
-
-let dy=nodes[a].y-nodes[b].y;
-
-
-let d=Math.sqrt(dx*dx+dy*dy);
-
-
-
-if(d<120){
-
-
-ctx.beginPath();
-
-ctx.moveTo(
-nodes[a].x,
-nodes[a].y
-);
-
-
-ctx.lineTo(
-nodes[b].x,
-nodes[b].y
-);
-
-
-
-ctx.strokeStyle=
-"rgba(150,220,255,.2)";
-
-
-ctx.stroke();
-
-
-}
-
-
-}
-
-}
-
-
-requestAnimationFrame(animate);
-
-
-}
-
-
-animate();
-
+<body class="h-screen w-screen flex items-center justify-center p-4 sm:p-8">
+
+    <!-- These are the colorful blurred shapes behind the glass -->
+    <div class="fixed top-1/4 left-1/4 w-96 h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-[100px] opacity-50 animate-blob z-0 pointer-events-none"></div>
+    <div class="fixed top-1/3 right-1/4 w-[28rem] h-[28rem] bg-cyan-600 rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-blob animation-delay-2000 z-0 pointer-events-none"></div>
+    <div class="fixed bottom-1/4 left-1/3 w-80 h-80 bg-pink-600 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-4000 z-0 pointer-events-none"></div>
+
+    <!-- Mouse Interactive Canvas -->
+    <canvas id="network"></canvas>
+
+    <div id="login" class="fixed inset-0 z-50 flex items-center justify-center bg-[#070514]/80 backdrop-blur-lg transition-opacity duration-500">
+        <div class="glass p-8 sm:p-12 rounded-[40px] w-full max-w-sm flex flex-col items-center text-center transform transition-all">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-cyan-500 flex items-center justify-center mb-6 shadow-[0_0_40px_rgba(189,147,249,0.6)]">
+                <i class="fa-solid fa-lock text-3xl text-white"></i>
+            </div>
+            
+            <h1 class="text-3xl font-extrabold text-gradient mb-2 tracking-wide">LAZY AI</h1>
+            <p class="text-cyan-200/60 mb-8 text-sm font-medium tracking-widest uppercase">System Locked</p>
+            
+            <div class="w-full relative">
+                <i class="fa-solid fa-key absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                <input 
+                    id="password" 
+                    type="password" 
+                    placeholder="Enter Secret Key" 
+                    class="glass-input w-full py-4 pl-14 pr-4 rounded-2xl text-white placeholder-gray-500 font-mono tracking-widest text-center"
+                >
+            </div>
+            
+            <p id="error" class="text-pink-400 text-sm mt-3 h-5 hidden font-medium">Invalid Key Signature</p>
+            
+            <button onclick="unlock()" class="btn-magic w-full mt-8 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-cyan-600 text-white font-bold tracking-widest uppercase text-sm shadow-lg">
+                Initialize Access
+            </button>
+        </div>
+    </div>
+
+    <main id="app-container" class="glass relative z-10 w-full max-w-4xl p-6 sm:p-10 flex flex-col h-full max-h-[850px] opacity-0 transition-opacity duration-1000 hidden">
+        
+        <!-- Header -->
+        <header class="text-center mb-8 shrink-0 relative">
+            <div class="text-5xl mb-4 floating drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">🥚</div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-gradient mb-3 tracking-tight">Dark Magic Egg AI</h1>
+            <p class="text-cyan-200/70 font-medium tracking-[0.2em] text-xs sm:text-sm uppercase">Infinite Fantasy Prompt Generator</p>
+        </header>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row justify-center gap-5 mb-8 shrink-0">
+            <button onclick="generatePrompt()" class="btn-magic flex-1 sm:flex-none flex items-center justify-center gap-3 py-4 px-8 rounded-2xl bg-gradient-to-r from-cyan-500/80 to-blue-600/80 font-bold shadow-[0_8px_32px_rgba(8,145,178,0.3)] backdrop-blur-md">
+                <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+                Generate Prompt
+            </button>
+            <button onclick="copyPrompt()" class="btn-magic flex-1 sm:flex-none flex items-center justify-center gap-3 py-4 px-8 rounded-2xl bg-white/5 hover:bg-white/10 font-bold transition-colors backdrop-blur-md border border-white/10">
+                <i class="fa-regular fa-copy text-lg"></i>
+                Copy to Clipboard
+            </button>
+        </div>
+
+        <!-- Output Display Area -->
+        <div class="relative flex-grow min-h-0">
+            <textarea 
+                id="output" 
+                readonly
+                placeholder="Initialize the generator to reveal your magic..."
+                class="glass-input w-full h-full p-6 sm:p-8 rounded-[30px] text-gray-100 font-['JetBrains_Mono'] text-sm sm:text-base leading-relaxed resize-none shadow-inner"
+            ></textarea>
+            
+            <!-- Minimalist Watermark -->
+            <div class="absolute bottom-5 right-8 text-white/5 font-extrabold text-4xl select-none pointer-events-none">
+                LAZY AI
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center mt-8 text-[10px] sm:text-xs text-gray-400 tracking-[0.3em] uppercase shrink-0 font-medium opacity-60">
+            Created by Lazy • Liquid Design Edition
+        </footer>
+    </main>
+
+    <div id="toast" class="fixed bottom-10 left-1/2 z-50 glass px-6 py-4 rounded-full flex items-center gap-3 border-emerald-500/30 text-emerald-300 shadow-[0_10px_30px_rgba(16,185,129,0.2)] backdrop-blur-xl">
+        <i class="fa-solid fa-check-circle text-lg"></i>
+        <span class="font-medium tracking-wide text-sm">Magical prompt copied!</span>
+    </div>
+
+    <script>
+        // DOM Elements
+        const loginScreen = document.getElementById('login');
+        const appContainer = document.getElementById('app-container');
+        const passwordInput = document.getElementById('password');
+        const errorMsg = document.getElementById('error');
+        const outputArea = document.getElementById('output');
+        const toastEl = document.getElementById('toast');
+
+        // -------------------------
+        // 1. UI LOGIN LOGIC
+        // -------------------------
+        function unlock() {
+            // Placeholder password check for UI demonstration
+            if (passwordInput.value === "1111" || passwordInput.value === "") {
+                errorMsg.classList.add('hidden');
+                passwordInput.classList.remove('border-pink-500', 'bg-pink-500/10');
+                
+                loginScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loginScreen.style.display = 'none';
+                    appContainer.classList.remove('hidden');
+                    // Small delay for smooth entry animation
+                    setTimeout(() => {
+                        appContainer.style.opacity = '1';
+                    }, 50);
+                }, 500);
+            } else {
+                errorMsg.classList.remove('hidden');
+                passwordInput.classList.add('border-pink-500', 'bg-pink-500/10');
+                
+                // Shake Animation for error
+                const parent = passwordInput.parentElement;
+                parent.style.transform = 'translateX(10px)';
+                setTimeout(() => parent.style.transform = 'translateX(-10px)', 50);
+                setTimeout(() => parent.style.transform = 'translateX(10px)', 100);
+                setTimeout(() => parent.style.transform = 'translateX(0)', 150);
+            }
+        }
+
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === "Enter") unlock();
+        });
+
+        // -------------------------
+        // 2. UI TOAST NOTIFICATION
+        // -------------------------
+        let toastTimeout;
+        function showToast() {
+            clearTimeout(toastTimeout);
+            toastEl.classList.add('show');
+            toastTimeout = setTimeout(() => {
+                toastEl.classList.remove('show');
+            }, 3000);
+        }
+
+        function copyPrompt() {
+            if (!outputArea.value) return;
+            outputArea.select();
+            try {
+                document.execCommand("copy");
+                showToast();
+            } catch (err) {
+                console.error('Copy failed', err);
+            }
+            window.getSelection().removeAllRanges();
+        }
+
+        // -------------------------
+        // 3. MOUSE INTERACTIVE CANVAS (Design Background)
+        // -------------------------
+        const canvas = document.getElementById("network");
+        const ctx = canvas.getContext("2d");
+        let width, height;
+        let mouse = { x: null, y: null };
+        
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        window.addEventListener('mousemove', e => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+        window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+
+        class Node {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 1.5 + 0.5;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                // Mouse Repel Logic
+                if (mouse.x && mouse.y) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
+                        this.x -= (dx / dist) * 2;
+                        this.y -= (dy / dist) * 2;
+                    }
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = "rgba(139, 233, 253, 0.8)";
+                ctx.fill();
+            }
+        }
+
+        let nodes = Array.from({ length: 80 }, () => new Node());
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, width, height);
+            
+            nodes.forEach(n => { n.update(); n.draw(); });
+
+            for (let i = 0; i < nodes.length; i++) {
+                // Connect to mouse
+                if (mouse.x && mouse.y) {
+                    let md = Math.hypot(nodes[i].x - mouse.x, nodes[i].y - mouse.y);
+                    if (md < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.strokeStyle = `rgba(189, 147, 249, ${1 - md/150})`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                }
+                // Connect to each other
+                for (let j = i + 1; j < nodes.length; j++) {
+                    let d = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+                    if (d < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(nodes[j].x, nodes[j].y);
+                        ctx.strokeStyle = `rgba(139, 233, 253, ${(1 - d/100) * 0.2})`;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
 
 
 
