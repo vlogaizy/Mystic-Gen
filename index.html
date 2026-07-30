@@ -2,10 +2,9 @@
 <html>
 <head>
 
-<title>🥚 Dark Magic Egg AI 🥚</title>
+<title>Promt Gen</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 
 <style>
 
@@ -13,260 +12,122 @@
 box-sizing:border-box;
 }
 
-
 body{
-
 margin:0;
 height:100vh;
 overflow:hidden;
-
-font-family:'Segoe UI',sans-serif;
-
+font-family:Segoe UI,sans-serif;
 display:flex;
 align-items:center;
 justify-content:center;
-
 color:white;
 
 background:
-
 radial-gradient(circle at 20% 20%,#3b0764,transparent 35%),
 radial-gradient(circle at 80% 70%,#003b4d,transparent 40%),
 #010107;
-
 }
-
-
 
 
 #network{
-
 position:absolute;
 inset:0;
-
 z-index:0;
-
 }
-
-
-
-/* Moving background */
-
-body:before{
-
-content:"";
-
-position:absolute;
-
-width:1000px;
-height:1000px;
-
-
-background:
-
-conic-gradient(
-transparent,
-rgba(160,0,255,.25),
-transparent,
-rgba(0,255,255,.18),
-transparent
-);
-
-
-
-filter:blur(120px);
-
-
-animation:energy 18s linear infinite;
-
-
-}
-
-
-@keyframes energy{
-
-0%{
-transform:rotate(0deg) scale(1);
-}
-
-50%{
-transform:rotate(180deg) scale(1.3);
-}
-
-100%{
-transform:rotate(360deg) scale(1);
-}
-
-}
-
-
-
-
-
-/* LOGIN */
 
 
 #login{
-
 position:fixed;
-
 inset:0;
-
 z-index:100;
 
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
 
-
 background:
-
 linear-gradient(
 135deg,
 #020204,
-#16002c,
+#15002b,
 #002b3a
 );
-
-
 }
-
 
 
 .login-box{
 
-
 width:90%;
-
 max-width:400px;
-
 
 padding:40px;
 
+text-align:center;
 
 border-radius:30px;
 
-
-text-align:center;
-
-
 background:
-
 rgba(255,255,255,.08);
-
 
 backdrop-filter:blur(25px);
 
-
-
 border:
-
-1px solid rgba(255,255,255,.2);
-
-
+1px solid rgba(255,255,255,.3);
 
 }
-
-
-
-.login-box h1{
-
-color:white;
-
-}
-
 
 
 .login-box input{
 
-
 width:100%;
-
 
 padding:15px;
 
+margin:20px 0;
 
 border-radius:15px;
 
+border:1px solid #555;
 
-border:1px solid rgba(255,255,255,.2);
-
-
-
-background:rgba(0,0,0,.5);
-
-
+background:black;
 
 color:white;
 
-
 text-align:center;
-
 
 font-size:18px;
 
-
-margin:20px 0;
-
-
 }
-
 
 
 #error{
-
 display:none;
-
-color:#ff7777;
-
+color:#ff6666;
 }
 
 
 
-
-
-/* MAIN CARD */
-
-
 .container{
-
 
 position:relative;
 
 z-index:5;
 
-
 width:90%;
 
-max-width:900px;
-
+max-width:950px;
 
 padding:40px;
 
-
 border-radius:35px;
 
-
 background:
-
 rgba(255,255,255,.08);
 
-
-
-backdrop-filter:
-
-blur(30px);
-
-
+backdrop-filter:blur(30px);
 
 border:
-
-1px solid rgba(255,255,255,.18);
-
-
+1px solid rgba(255,255,255,.2);
 
 }
 
@@ -274,38 +135,27 @@ border:
 
 h1{
 
-
 text-align:center;
 
-
-font-size:44px;
-
-
+font-size:45px;
 
 background:
-
 linear-gradient(
 90deg,
-#fff,
-#9be7ff,
+white,
+#8be9fd,
 #d8b4fe
 );
 
-
-
 -webkit-background-clip:text;
 
-
 color:transparent;
-
-
 
 }
 
 
 
 .subtitle{
-
 
 text-align:center;
 
@@ -315,10 +165,7 @@ opacity:.7;
 
 
 
-
-
 .buttons{
-
 
 display:flex;
 
@@ -328,172 +175,97 @@ gap:15px;
 
 margin:25px;
 
-
 }
-
 
 
 
 button{
 
-
 padding:16px 40px;
-
 
 border-radius:18px;
 
-
 cursor:pointer;
-
 
 font-size:17px;
 
-
-font-weight:600;
-
-
 color:white;
 
-
+font-weight:bold;
 
 background:
-
 rgba(255,255,255,.12);
 
-
-
 border:
+1px solid rgba(255,255,255,.3);
 
-1px solid rgba(255,255,255,.25);
-
-
-
-backdrop-filter:
-
-blur(15px);
-
-
-
-box-shadow:
-
-inset 0 0 15px rgba(255,255,255,.05);
-
-
-
-transition:.35s;
-
+transition:.3s;
 
 }
 
 
 
-
 button:hover{
-
 
 transform:translateY(-5px);
 
-
-
 background:
-
 linear-gradient(
 135deg,
 #7c3aed,
 #0891b2
 );
 
-
-
-border-color:white;
-
-
 }
-
 
 
 
 textarea{
 
-
 width:100%;
-
 
 height:380px;
 
-
 padding:20px;
-
 
 border-radius:25px;
 
-
 background:
-
-rgba(0,0,0,.55);
-
-
-
-border:
-
-1px solid rgba(255,255,255,.2);
-
-
+rgba(0,0,0,.6);
 
 color:white;
 
-
+border:1px solid #555;
 
 font-size:16px;
 
-
 resize:none;
 
-
 }
-
-
 
 
 
 .footer{
 
-
 position:absolute;
-
 
 bottom:20px;
 
-
 left:50%;
-
 
 transform:translateX(-50%);
 
-
 z-index:10;
-
-
-font-size:18px;
-
 
 letter-spacing:4px;
 
-
-color:white;
-
-
 opacity:.8;
-
 
 }
 
 
 
-
-
 @media(max-width:700px){
-
 
 .container{
 
@@ -504,13 +276,11 @@ padding:25px;
 }
 
 
-
 h1{
 
 font-size:30px;
 
 }
-
 
 
 .buttons{
@@ -520,7 +290,6 @@ flex-direction:column;
 }
 
 
-
 button{
 
 width:100%;
@@ -528,26 +297,13 @@ width:100%;
 }
 
 
-
 textarea{
 
 height:280px;
 
-font-size:14px;
-
-}
-
-
-
-.footer{
-
-font-size:14px;
-
 }
 
 }
-
-
 
 </style>
 
@@ -557,17 +313,13 @@ font-size:14px;
 <body>
 
 
-
 <div id="login">
 
-
 <div class="login-box">
-
 
 <h1>
 🔐 LAZY AI
 </h1>
-
 
 <p>
 Enter Password
@@ -575,8 +327,8 @@ Enter Password
 
 
 <input 
-type="password"
 id="password"
+type="password"
 placeholder="Password">
 
 
@@ -592,17 +344,11 @@ Wrong Password
 
 </div>
 
-
 </div>
 
 
 
-
-
 <canvas id="network"></canvas>
-
-
-
 
 
 <div class="container">
@@ -614,105 +360,86 @@ Wrong Password
 
 
 <div class="subtitle">
-
 Infinite Fantasy Prompt Generator
-
 </div>
-
 
 
 <div class="buttons">
 
-
 <button onclick="generatePrompt()">
-
 🎲 Generate
-
 </button>
 
 
 <button onclick="copyPrompt()">
-
 📋 Copy
-
 </button>
 
 
 </div>
 
 
-
-
-<textarea id="output"
-placeholder="Your magical prompt appears here...">
-</textarea>
+<textarea id="output"></textarea>
 
 
 </div>
-
 
 
 
 <div class="footer">
-
 Create by Lazy
-
 </div>
-
-
-
 
 
 <script>
 
-
-/* LOGIN SAVE */
-
+/* =====================
+LOGIN
+===================== */
 
 function unlock(){
 
-
-let p=document.getElementById("password").value;
-
+let p=password.value;
 
 if(p==="1111"){
 
-
 localStorage.setItem(
 "lazyAIUnlocked",
-"true"
+"yes"
 );
 
-
-document.getElementById("login").style.display="none";
-
+login.style.display="none";
 
 }
 
 else{
 
-
-document.getElementById("error").style.display="block";
-
+error.style.display="block";
 
 }
 
 }
-
 
 
 window.onload=()=>{
 
+if(
+localStorage.getItem("lazyAIUnlocked")
+==="yes"
+){
 
-if(localStorage.getItem("lazyAIUnlocked")
-==="true"){
-
-
-document.getElementById("login").style.display="none";
-
+login.style.display="none";
 
 }
 
+};
+
+
+
+password.onkeypress=e=>{
+
+if(e.key==="Enter")
+unlock();
 
 };
 
@@ -720,7 +447,9 @@ document.getElementById("login").style.display="none";
 
 
 
-/* NETWORK */
+/* =====================
+NETWORK
+===================== */
 
 
 const canvas=document.getElementById("network");
@@ -734,7 +463,6 @@ canvas.height=innerHeight;
 
 
 let mouse={x:null,y:null};
-
 
 
 onmousemove=e=>{
@@ -752,19 +480,14 @@ class Node{
 
 constructor(){
 
-
 this.x=Math.random()*canvas.width;
 
 this.y=Math.random()*canvas.height;
 
 
-this.dx=(Math.random()-.5)*.5;
+this.vx=(Math.random()-.5)*.5;
 
-this.dy=(Math.random()-.5)*.5;
-
-
-this.size=2;
-
+this.vy=(Math.random()-.5)*.5;
 
 }
 
@@ -772,44 +495,9 @@ this.size=2;
 
 update(){
 
+this.x+=this.vx;
 
-this.x+=this.dx;
-
-this.y+=this.dy;
-
-
-
-if(this.x<0||this.x>canvas.width)
-this.dx*=-1;
-
-
-if(this.y<0||this.y>canvas.height)
-this.dy*=-1;
-
-
-
-if(mouse.x){
-
-
-let dx=mouse.x-this.x;
-
-let dy=mouse.y-this.y;
-
-
-let d=Math.sqrt(dx*dx+dy*dy);
-
-
-if(d<150){
-
-this.x-=dx*.003;
-
-this.y-=dy*.003;
-
-}
-
-
-}
-
+this.y+=this.vy;
 
 }
 
@@ -817,14 +505,12 @@ this.y-=dy*.003;
 
 draw(){
 
-
 ctx.beginPath();
-
 
 ctx.arc(
 this.x,
 this.y,
-this.size,
+2,
 0,
 Math.PI*2
 );
@@ -835,23 +521,22 @@ ctx.fillStyle="#8be9fd";
 
 ctx.fill();
 
-
 }
 
 
 }
+
 
 
 
 let nodes=[];
 
 
-let count=innerWidth<600?60:120;
+for(let i=0;i<100;i++){
 
-
-
-for(let i=0;i<count;i++)
 nodes.push(new Node());
+
+}
 
 
 
@@ -859,7 +544,13 @@ nodes.push(new Node());
 function animate(){
 
 
-ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
 
 
 nodes.forEach(n=>{
@@ -872,18 +563,20 @@ n.draw();
 
 
 
-for(let i=0;i<nodes.length;i++){
+
+for(let a=0;a<nodes.length;a++){
 
 
-for(let j=i+1;j<nodes.length;j++){
+for(let b=a;b<nodes.length;b++){
 
 
-let dx=nodes[i].x-nodes[j].x;
+let dx=nodes[a].x-nodes[b].x;
 
-let dy=nodes[i].y-nodes[j].y;
+let dy=nodes[a].y-nodes[b].y;
 
 
 let d=Math.sqrt(dx*dx+dy*dy);
+
 
 
 if(d<120){
@@ -891,21 +584,28 @@ if(d<120){
 
 ctx.beginPath();
 
+ctx.moveTo(
+nodes[a].x,
+nodes[a].y
+);
 
-ctx.moveTo(nodes[i].x,nodes[i].y);
 
+ctx.lineTo(
+nodes[b].x,
+nodes[b].y
+);
 
-ctx.lineTo(nodes[j].x,nodes[j].y);
 
 
 ctx.strokeStyle=
-"rgba(150,220,255,.25)";
+"rgba(150,220,255,.2)";
 
 
 ctx.stroke();
 
 
 }
+
 
 }
 
@@ -924,65 +624,977 @@ animate();
 
 
 
-/* PROMPT */
+/* =====================
+INFINITE PROMPT DATA
+===================== */
 
 
 const data={
 
-egg:[
-"obsidian crystal egg",
-"ancient dragon egg",
-"dark cosmic egg",
-"moonstone magical egg"
+
+
+material:[
+
+"obsidian",
+"ancient stone",
+"translucent crystal",
+"moonstone",
+"shadow quartz",
+"celestial meteor stone",
+"void glass",
+"black diamond",
+"frozen sapphire",
+"nebula crystal",
+"dragon scale stone",
+"forgotten temple rock",
+"abyssal gemstone",
+"emerald crystal",
+"blood ruby",
+"star fragment",
+"galaxy marble",
+"phantom quartz",
+"dark amethyst",
+"silver moon crystal",
+"enchanted granite",
+"volcanic glass",
+"fossilized magic stone",
+"glowing jade",
+"crystalized shadow",
+"cosmic pearl",
+"ancient obsidian shard",
+"meteor iron",
+"frost crystal",
+"eternal ice stone",
+"aurora crystal",
+"black opal",
+"mystic sapphire",
+"cursed gemstone",
+"dragon heart crystal",
+"celestial pearl",
+"void marble",
+"dark crystal glass",
+"astral rock",
+"fallen star fragment",
+"witchstone",
+"arcane crystal",
+"phantom gemstone",
+"lava stone",
+"storm quartz",
+"thunder crystal",
+"electric sapphire",
+"sunken relic stone",
+"abyss crystal",
+"shadow marble",
+"glacier quartz",
+"crystalized lava",
+"ancient rune stone",
+"enchanted meteorite",
+"moon crater rock",
+"silverstone",
+"golden crystal",
+"cosmic obsidian",
+"dimensional glass",
+"parallel world crystal",
+"dark emerald",
+"royal gemstone",
+"mystical pearl",
+"frozen diamond",
+"black ice crystal",
+"shadow sapphire",
+"void pearl",
+"nightmare stone",
+"dream crystal",
+"ancient dragon stone",
+"phoenix crystal",
+"immortal stone",
+"celestial ruby",
+"galactic quartz",
+"star dust crystal",
+"ether crystal",
+"spirit stone",
+"haunted gemstone",
+"lost civilization crystal",
+"alien mineral",
+"extraterrestrial crystal",
+"plasma stone",
+"energy crystal",
+"gravity stone",
+"timeworn relic rock",
+"time crystal",
+"dimension shard",
+"magic core crystal",
+"arcane meteor stone",
+"enchanted pearl",
+"dark crystal alloy",
+"silver moonstone",
+"black galaxy stone",
+"rainbow prism crystal",
+"hyper crystal",
+"infinity stone fragment",
+"quantum gemstone",
+"ancient cosmic rock",
+"void diamond",
+"celestial obsidian",
+"mystery crystal",
+"forgotten star stone"
+
 ],
+
+
+
+rune:[
+
+"sapphire blue",
+"golden",
+"emerald green",
+"violet purple",
+"crimson red",
+"obsidian black",
+"silver white",
+"celestial cyan",
+"aurora green",
+"blood orange",
+"deep ocean blue",
+"midnight purple",
+"rose gold",
+"ancient bronze",
+"ghostly white",
+"neon turquoise",
+"lava red",
+"frost blue",
+"moonlight silver",
+"shadow violet",
+"dark emerald",
+"cosmic pink",
+"stellar gold",
+"galaxy blue",
+"void black",
+"mystic teal",
+"electric blue",
+"phantom purple",
+"dragon red",
+"phoenix orange",
+"arcane yellow",
+"ethereal blue",
+"spirit green",
+"magic pink",
+"royal purple",
+"ancient jade",
+"diamond white",
+"sunfire gold",
+"storm gray",
+"thunder blue",
+"cursed crimson",
+"enchanted aqua",
+"astral violet",
+"nebula pink",
+"solar orange",
+"lunar silver",
+"abyss blue",
+"shadow green",
+"frozen cyan",
+"glowing amber",
+"ruby red",
+"sapphire glow",
+"emerald glow",
+"amethyst glow",
+"plasma blue",
+"quantum violet",
+"infinity white",
+"dark ruby",
+"crystal cyan",
+"mystic gold",
+"forgotten bronze",
+"celestial white",
+"cosmic violet",
+"void crimson",
+"ancient silver",
+"arcane turquoise",
+"witchfire green",
+"phantom cyan",
+"spiritual gold",
+"dimensional purple",
+"starfire blue",
+"moonstone glow",
+"black flame",
+"white flame",
+"rainbow prism",
+"hyper neon blue",
+"toxic green",
+"radioactive lime",
+"galactic orange",
+"dream purple",
+"nightmare red",
+"ether blue",
+"divine gold",
+"shadow flame",
+"dark aurora",
+"crystal rainbow",
+"solar flare red",
+"ice crystal blue",
+"volcanic orange",
+"mystic lavender",
+"royal sapphire",
+"ancient rune bronze",
+"golden sunlight",
+"deep violet",
+"emerald aura",
+"crimson aura",
+"silver aura",
+"cosmic aura",
+"void aura",
+"legendary rainbow"
+
+],
+
+
 
 creature:[
-"baby dragon",
+
+"dragon",
 "phoenix chick",
-"crystal fairy",
-"shadow dragon"
+"winged forest sprite",
+"crystal griffin",
+"shadow fairy",
+"baby wyvern",
+"moonlight unicorn",
+"ancient dragon hatchling",
+"forest guardian spirit",
+"celestial owl",
+"mystic fox",
+"crystal wolf pup",
+"shadow raven",
+"enchanted butterfly",
+"tiny elemental golem",
+"frost dragon",
+"lava salamander",
+"storm phoenix",
+"cosmic serpent",
+"fairy dragon",
+"emerald dryad",
+"abyss creature",
+"starborn kitten",
+"magic deer",
+"spirit wolf",
+"golden griffin",
+"dark unicorn",
+"crystal phoenix",
+"void dragon",
+"moon fairy",
+"ancient tree spirit",
+"glowing moth creature",
+"shadow panther cub",
+"ice dragon baby",
+"thunder bird",
+"celestial fox",
+"nebula butterfly",
+"crystal turtle",
+"arcane lizard",
+"mystic owl",
+"enchanted rabbit",
+"dragon fairy hybrid",
+"floating jelly spirit",
+"astral wolf",
+"phantom horse",
+"miniature kraken",
+"cosmic whale",
+"winged cat spirit",
+"forest elf creature",
+"golden phoenix chick",
+"silver dragon hatchling",
+"rainbow serpent",
+"shadow dragon",
+"crystal butterfly",
+"fire elemental",
+"water spirit",
+"earth guardian",
+"air elemental creature",
+"ancient phoenix",
+"dark griffin",
+"frost fairy",
+"lava dragon",
+"storm wolf",
+"moonstone guardian",
+"star crystal beast",
+"void phoenix",
+"phantom dragon",
+"enchanted squirrel",
+"magic hummingbird",
+"celestial deer",
+"shadow fox",
+"glowing salamander",
+"crystal unicorn foal",
+"dragon turtle",
+"abyssal mermaid",
+"sky serpent",
+"cloud spirit",
+"dimensional creature",
+"forgotten forest beast",
+"arcane phoenix",
+"nightmare creature",
+"dream guardian",
+"cosmic dragonling",
+"ethereal butterfly",
+"mystic bat",
+"ancient wolf spirit",
+"crystal owl guardian",
+"shadow unicorn",
+"golden dragonling",
+"purple flame phoenix",
+"enchanted peacock",
+"celestial koi spirit",
+"starfall creature",
+"quantum beast",
+"infinity dragon",
+"legendary chimera",
+"ancient relic guardian",
+"void crystal beast",
+"mythical baby creature"
+
 ],
 
-magic:[
-"blue magical mist",
-"gold dust",
-"dark energy",
-"crystal particles"
+
+
+skin:[
+
+"iridescent blue",
+"fiery orange",
+"pearl white",
+"emerald glow",
+"silver light",
+"obsidian black",
+"golden shimmer",
+"violet crystal",
+"crimson scales",
+"azure glass",
+"moonlight white",
+"shadow matte",
+"rainbow holographic",
+"frosted crystal",
+"nebula purple",
+"galaxy blue",
+"dark sapphire",
+"ruby red",
+"jade green",
+"aurora glow",
+"celestial silver",
+"black diamond texture",
+"translucent crystal",
+"glowing cyan",
+"ancient bronze",
+"molten lava",
+"frozen ice",
+"storm cloud gray",
+"cosmic pink",
+"star dust shimmer",
+"void black",
+"ethereal lavender",
+"magic turquoise",
+"phoenix flame orange",
+"dragon scale gold",
+"crystal rainbow",
+"phantom white",
+"shadow violet",
+"electric blue",
+"toxic green",
+"solar gold",
+"lunar pearl",
+"deep ocean blue",
+"mystic teal",
+"enchanted rose",
+"glacier blue",
+"volcanic red",
+"plasma purple",
+"quantum silver",
+"diamond glow",
+"opal rainbow",
+"spirit aura white",
+"dark emerald",
+"silver frost",
+"golden flame",
+"midnight blue",
+"ancient rune texture",
+"crystalized sapphire",
+"glowing amber",
+"celestial pink",
+"abyss purple",
+"storm lightning pattern",
+"moonstone texture",
+"starry night pattern",
+"galactic swirl",
+"dimensional glass",
+"energy plasma skin",
+"magic flame texture",
+"shadow smoke texture",
+"frost crystal scales",
+"liquid metal silver",
+"black pearl shine",
+"white marble texture",
+"gold leaf pattern",
+"emerald crystal scales",
+"ruby gemstone skin",
+"sapphire gemstone skin",
+"amethyst glow",
+"obsidian crystal armor",
+"fairy dust shimmer",
+"cosmic aurora skin",
+"ancient stone texture",
+"glowing forest green",
+"mystic flame blue",
+"rainfall glass texture",
+"sunfire orange",
+"moon shadow gray",
+"void energy skin",
+"celestial rainbow",
+"hyper neon glow",
+"legendary golden aura",
+"infinity crystal texture",
+"forgotten magic skin",
+"astral shimmer",
+"spiritual glow",
+"dragon pearl scales",
+"enchanted crystal armor",
+"nightmare shadow texture",
+"divine light skin",
+"mythical prism skin"
+
+],
+
+
+
+eyes:[
+
+"amber",
+"ruby red",
+"amethyst purple",
+"electric blue",
+"emerald green",
+"golden glow",
+"silver white",
+"obsidian black",
+"crystal cyan",
+"neon turquoise",
+"fiery orange",
+"moonlight blue",
+"violet flame",
+"blood crimson",
+"starry galaxy",
+"aurora rainbow",
+"frost white",
+"shadow purple",
+"celestial gold",
+"diamond blue",
+"jade green",
+"cosmic pink",
+"void black",
+"glowing sapphire",
+"ancient bronze",
+"plasma blue",
+"mystic teal",
+"phantom white",
+"dragon gold",
+"phoenix orange",
+"storm gray",
+"lightning yellow",
+"dark emerald",
+"ruby crystal",
+"amethyst crystal",
+"sapphire crystal",
+"nebula violet",
+"solar flare",
+"lunar silver",
+"ghostly blue",
+"enchanted green",
+"arcane purple",
+"magic flame",
+"deep ocean blue",
+"lava red",
+"frozen cyan",
+"crystal rainbow",
+"ethereal white",
+"shadow ember",
+"golden fire",
+"silver moon",
+"black diamond",
+"galactic swirl",
+"star dust glow",
+"quantum blue",
+"infinity rainbow",
+"ancient rune glow",
+"spirit green",
+"dreamy lavender",
+"nightmare crimson",
+"abyssal blue",
+"celestial pink",
+"divine white",
+"dark sapphire",
+"electric violet",
+"toxic neon green",
+"hyper blue",
+"mystic amber",
+"solar gold",
+"moonstone glow",
+"phantom violet",
+"crystal pearl",
+"glowing jade",
+"storm lightning",
+"dragon flame",
+"phoenix fire",
+"void energy",
+"astral cyan",
+"dimension purple",
+"enchanted ruby",
+"frost crystal",
+"aurora blue",
+"cosmic orange",
+"shadow silver",
+"magic rainbow",
+"ancient emerald",
+"legendary gold",
+"ethereal turquoise",
+"forgotten star glow",
+"dark crystal",
+"bright plasma",
+"celestial sapphire",
+"mystery violet",
+"arcane flame",
+"immortal light",
+"mythical prism"
+],
+
+
+
+
+element:[
+
+"magical blue mist",
+"sparkling gold dust",
+"cool smoke",
+"dark purple energy",
+"glowing green aura",
+"crimson flame",
+"silver magical particles",
+"floating crystal shards",
+"blue lightning sparks",
+"golden fire aura",
+"shadow smoke",
+"violet energy waves",
+"emerald magic fog",
+"cosmic stardust",
+"frozen ice mist",
+"burning orange flames",
+"moonlight particles",
+"dark shadow flames",
+"rainbow energy glow",
+"ancient rune sparks",
+"electric blue aura",
+"purple magical smoke",
+"golden galaxy dust",
+"black void energy",
+"crystal light beams",
+"floating magic orbs",
+"mystic wind swirl",
+"celestial rays",
+"phantom mist",
+"dragon fire aura",
+"phoenix flame particles",
+"storm clouds",
+"thunder sparks",
+"enchanted leaves",
+"glowing fairy dust",
+"astral energy field",
+"nebula mist",
+"star fragments",
+"liquid magic waves",
+"arcane energy rings",
+"shadow tendrils",
+"white holy light",
+"dark purple flames",
+"blue frost crystals",
+"lava sparks",
+"golden magical smoke",
+"emerald energy waves",
+"violet lightning",
+"cosmic portal glow",
+"dimensional particles",
+"spirit flames",
+"ancient magic dust",
+"moon crystal aura",
+"sunfire glow",
+"black mist vortex",
+"crystal rainbow particles",
+"energy plasma waves",
+"mystical fog",
+"enchanted water droplets",
+"floating golden runes",
+"dark energy storm",
+"silver moon rays",
+"glowing sapphire particles",
+"ruby flame sparks",
+"amethyst magic aura",
+"void mist",
+"infinity light particles",
+"quantum energy field",
+"celestial blue flames",
+"shadow galaxy smoke",
+"fairy sparkle trail",
+"frozen magic crystals",
+"electric storm aura",
+"arcane purple waves",
+"divine golden light",
+"nightmare fog",
+"dreamlike rainbow mist",
+"ancient spirit energy",
+"forest magic particles",
+"crystal dust cloud",
+"starfire sparks",
+"black flame aura",
+"aurora energy",
+"mystic thunder glow",
+"enchanted smoke rings",
+"cosmic lightning",
+"glowing ether waves",
+"forgotten relic energy",
+"legendary magic aura",
+"hyper neon particles",
+"dark crystal mist",
+"celestial storm",
+"prismatic energy",
+"immortal light rays",
+"mythical power field",
+"void crystal sparks",
+"astral flame vortex",
+"ancient cosmic energy"
+
+],
+
+
+
+
+light:[
+
+"cool moonlight",
+"twilight",
+"golden forest rays",
+"soft sunrise glow",
+"mystical blue light",
+"silver moon beams",
+"warm sunset rays",
+"dark enchanted lighting",
+"celestial white glow",
+"purple twilight haze",
+"emerald forest light",
+"golden magical illumination",
+"crystal reflections",
+"frosty morning light",
+"deep midnight glow",
+"aurora sky light",
+"cosmic starlight",
+"dreamy pastel glow",
+"ancient temple lighting",
+"shadowy candlelight",
+"ethereal mist light",
+"soft angelic rays",
+"volcanic orange glow",
+"blue fire illumination",
+"enchanted woodland light",
+"fairy dust glow",
+"moonbeam spotlight",
+"nebula colored light",
+"dark fantasy lighting",
+"mystic purple glow",
+"golden hour sunlight",
+"rainbow prism light",
+"glowing crystal light",
+"stormy atmosphere light",
+"foggy forest illumination",
+"underwater blue glow",
+"ancient rune glow",
+"phantom silver light",
+"shadow portal lighting",
+"divine heavenly rays",
+"black magic candle glow",
+"frozen ice reflection",
+"dragon fire glow",
+"phoenix flame light",
+"soft cloudy daylight",
+"starfall illumination",
+"galaxy horizon glow",
+"hidden cave crystal light",
+"enchanted lantern glow",
+"mysterious green light",
+"dark blue ambient light",
+"warm magical lanterns",
+"ethereal golden haze",
+"moonstone reflection",
+"crystal cave illumination",
+"cosmic sunrise",
+"purple galaxy glow",
+"silent forest shadows",
+"silver twilight rays",
+"ancient castle lighting",
+"magic portal light",
+"floating orb illumination",
+"fairy kingdom glow",
+"night forest ambience",
+"celestial aurora rays",
+"deep ocean light",
+"glowing mushroom forest light",
+"shadow and light contrast",
+"mystical fog illumination",
+"golden dust sunlight",
+"arcane blue rays",
+"dark violet atmosphere",
+"white crystal shine",
+"ruby red glow",
+"emerald green illumination",
+"sapphire blue lighting",
+"amethyst purple rays",
+"storm lightning flash",
+"rainy night glow",
+"soft candle aura",
+"forgotten ruins lighting",
+"legendary artifact glow",
+"infinity cosmic light",
+"hyper neon illumination",
+"dimensional portal glow",
+"ancient magical sunrise",
+"phantom dream light",
+"spiritual white rays",
+"void darkness glow",
+"starry night reflection",
+"enchanted forest sunrise",
+"mystic cave shadows",
+"golden celestial beam",
+"astral moon glow",
+"mythical dawn light",
+"shadow realm lighting",
+"prismatic rainbow rays",
+"eternal magical glow"
+
+],
+
+
+
+
+floor:[
+
+"dark moss-covered forest floor",
+"wet emerald moss forest floor",
+"ancient forest floor covered with fallen leaves",
+"shadowy woodland floor with damp soil",
+"misty forest floor covered in soft moss",
+"dark muddy forest floor with tiny roots",
+"rain-soaked forest floor with scattered bark",
+"deep green moss carpet forest floor",
+"old woodland floor with decaying leaves",
+"fog-covered forest ground with moss patches",
+"black soil forest floor with small stones",
+"wild jungle floor covered with vines",
+"ancient mossy ground with twisted roots",
+"forest floor covered with pine needles",
+"dark woodland soil mixed with lichen",
+"wet forest ground with mushroom clusters",
+"hidden forest floor beneath giant trees",
+"soft moss-covered earth with tiny plants",
+"rocky forest floor with green moss growth",
+"forgotten forest ground covered with debris",
+"dark rainforest floor with wet vegetation",
+"old forest floor with broken branches",
+"moist woodland ground with fern leaves",
+"shadow forest floor with glowing moss",
+"natural forest earth covered with moss layers",
+"deep jungle floor with tangled roots",
+"dark soil covered with colorful fungi",
+"forest floor with dew-covered moss",
+"ancient woodland ground with cracked bark",
+"foggy forest floor with tiny plants",
+"wet moss terrain with scattered pebbles",
+"dark forest floor covered with dry leaves",
+"enchanted woodland floor with magical plants",
+"mysterious forest ground with moss and stones",
+"rainforest floor with thick green vegetation",
+"dark earthy floor with exposed roots",
+"forest floor covered with fallen flowers",
+"cold forest ground with icy moss",
+"old mossy terrain with rotten wood",
+"deep forest floor hidden in shadows",
+"wild woodland floor with natural textures",
+"damp forest soil with tiny mushrooms",
+"dark green moss terrain under trees",
+"ancient jungle floor with leaf litter",
+"forest ground covered with small branches",
+"wet earth floor with water puddles",
+"silent forest floor covered in fog",
+"dark woodland terrain with stone fragments",
+"lush mossy forest ground",
+"mysterious forest floor with glowing spores",
+"thick moss forest floor with roots",
+"dark forest earth after rainfall",
+"forgotten woodland floor with decayed plants",
+"soft muddy forest ground",
+"forest floor covered with autumn leaves",
+"shadowy moss terrain with tiny rocks",
+"ancient tree-covered forest floor",
+"deep green jungle earth",
+"dark enchanted forest ground",
+"wet woodland floor with natural debris",
+"forest floor covered with fern shadows",
+"black mossy ground with hidden roots",
+"forest soil mixed with fallen petals",
+"dark forest floor with crystal-like stones",
+"misty woodland earth with moss",
+"rainy forest ground covered in leaves",
+"old jungle floor with thick vegetation",
+"dark forest terrain with organic textures",
+"moss-covered rocky forest floor",
+"ancient forest soil with tree fragments",
+"wet green forest carpet",
+"shadow forest floor with tiny plants",
+"deep woodland ground with soft moss",
+"dark forest floor with water reflections",
+"foggy moss-covered terrain",
+"natural forest floor with decayed leaves",
+"dark earth covered with lichen",
+"wild forest ground with tangled roots",
+"ancient moss terrain beneath old trees",
+"wet jungle floor with organic matter",
+"dark woodland floor with scattered stones",
+"forest ground covered with tiny flowers",
+"deep forest floor with glowing fungi",
+"mossy earth with fallen branches",
+"dark rainforest soil with roots",
+"old forest floor with natural patterns",
+"hidden woodland floor under fog",
+"wet moss ground with small streams",
+"dark forest floor with leaf textures",
+"enchanted moss terrain",
+"ancient woodland soil with rocks",
+"shadowy jungle floor",
+"green moss-covered forest earth",
+"dark forest ground with wild plants",
+"rain-soaked woodland floor",
+"mysterious forest soil with spores",
+"deep forest floor with natural decay",
+"old mossy ground with bark pieces",
+"dark forest terrain covered with vegetation",
+"silent woodland floor with mist"
+
 ]
+
+
 
 };
 
 
 
-function random(a){
+
+function pick(a){
 
 return a[Math.floor(Math.random()*a.length)];
 
 }
 
+/* =====================
+GENERATE PROMPT
+===================== */
 
 
 function generatePrompt(){
 
 
-output.value=
+let history=JSON.parse(
 
-`
+localStorage.getItem("eggHistory")||"[]"
 
-Ultra realistic macro fantasy photography.
+);
 
-A ${random(data.egg)}
-covered with glowing ancient runes.
 
-A baby ${random(data.creature)}
-emerges from a magical crack.
 
-Magical ${random(data.magic)}
-flows around the creature.
+let result;
 
-Dark cinematic fantasy atmosphere.
+let key;
 
-8K highly detailed creature photography.
+
+
+do{
+
+
+result={
+
+m:pick(data.material),
+
+r:pick(data.rune),
+
+c:pick(data.creature),
+
+s:pick(data.skin),
+
+e:pick(data.eyes),
+
+x:pick(data.element),
+
+l:pick(data.light),
+
+f:pick(data.floor)
+
+};
+
+
+
+key=JSON.stringify(result);
+
+
+
+}
+
+while(history.includes(key));
+
+
+
+history.push(key);
+
+
+
+localStorage.setItem(
+
+"eggHistory",
+
+JSON.stringify(history)
+
+);
+
+
+
+
+
+output.value=`
+
+Ultra-realistic, hyper-detailed macro photography on a ${result.f}.
+
+A single ${result.m} magical egg is nestled on the ground.
+
+The egg surface is etched with glowing ${result.r} runic patterns.
+
+A wide crack has formed across the shell.
+
+A baby ${result.c} emerges from the egg.
+
+Its body has a ${result.s} bioluminescent glow.
+
+The creature's eyes are ${result.e}.
+
+Tiny tendrils of ${result.x} escape from the egg.
+
+Soft ${result.l} filters through the forest canopy.
+
+Cinematic dramatic lighting.
+
+Extreme macro lens.
+
+High-resolution photorealistic fantasy creature photography.
+
+8K detail, realistic textures, magical atmosphere.
 
 `;
 
@@ -991,10 +1603,16 @@ Dark cinematic fantasy atmosphere.
 
 
 
+/* =====================
+COPY
+===================== */
+
+
 function copyPrompt(){
 
 
 navigator.clipboard.writeText(output.value);
+
 
 alert("Copied ✨");
 
@@ -1007,4 +1625,5 @@ alert("Copied ✨");
 
 
 </body>
+
 </html>
