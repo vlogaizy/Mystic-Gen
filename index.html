@@ -1416,81 +1416,50 @@ function generatePrompt() {
     // Constructing Part 2 (Video/Consistency prompt)
     const promptPart2 = `FIRST FRAME MUST BE EXACTLY THE PROVIDED REFERENCE IMAGE.
 
-Use the reference image as the absolute starting frame. Do not change anything in the first frame.
+Use the provided image reference as the absolute starting frame. Do not change anything in the first frame. Preserve the exact same baby ${result.c} design, species, body shape, facial features, ${result.e} eyes, ${result.s} texture, colors, glowing ${result.r} runic elements, ${result.l} lighting, environment, ${result.f} floor, background, camera angle, composition, depth of field, atmosphere, and visual style.
 
-Preserve the exact same magical egg, baby creature, creature design, species, body shape, facial features, eyes, skin/fur/scales texture, colors, glowing elements, runic patterns, lighting, forest floor, background, camera angle, composition, depth of field, atmosphere, and visual style from the reference image.
+Continue naturally from the provided image reference.
 
-Continue naturally from the reference image.
+Ultra-realistic cinematic wildlife documentary fantasy scene. The tiny baby ${result.c} from the provided image reference slowly reaches its enormous mother. The mother ${result.c} is the exact same species and has the exact same appearance as the baby ${result.c}, only scaled up into a gigantic adult form.
 
-Ultra-realistic, hyper-detailed cinematic wildlife documentary fantasy scene.
+The mother ${result.c} must have the exact same colors, textures, patterns, facial structure, ${result.e} eyes, glowing features, body proportions, and biological details as the baby ${result.c} from the provided image reference.
 
-The magical egg from the reference image remains exactly the same. The baby ${result.c} slowly emerges from the cracked ${result.m} magical egg.
+The mother ${result.c} must inherit every single physical detail from the baby ${result.c} exactly. If the baby ${result.c} has specific arms, legs, claws, fingers, toes, wings, horns, tail, ears, ${result.e} eyes, scales, fur, ${result.s} texture, patterns, or any unique body features, the mother ${result.c} must have the exact same features, same structure, same design, and same appearance — only enlarged to a massive adult size.
 
-The baby creature must keep the exact same appearance as the reference image:
-same species,
-same body structure,
-same colors,
-same textures,
-same eyes,
-same glowing features,
-same anatomy,
-same limbs,
-same claws,
-same wings,
-same horns,
-same tail,
-same ears,
-same unique biological details.
+Do not modify, redesign, replace, or add any body parts. The anatomy must remain identical to the reference creature. Every limb, finger, toe, claw, texture, and characteristic feature must match perfectly between the baby and the mother ${result.c}.
 
-Do not redesign the creature.
-Do not add extra body parts.
-Do not remove any features.
-The creature anatomy must remain identical to the reference image.
+The mother ${result.c} stands majestically in the same environment. Her enormous body creates a powerful size contrast with the tiny baby. The baby ${result.c} stands beside her giant body, looking upward at its mother with trust and affection. The mother gently lowers her huge head toward the baby, creating a natural mother-and-child reunion moment. Tiny tendrils of ${result.x} drift naturally in the air around them.
 
-The egg surface must keep the same glowing ${result.r} runic patterns and magical details. Tiny tendrils of ${result.x} slowly escape from the cracked egg naturally.
+The mother ${result.c} should look like the baby ${result.c} naturally grew into an adult version of the exact same creature species. Same appearance, same genetics, same characteristics, only a much larger size.
 
-The baby creature's body has the same ${result.s} bioluminescent glow as shown in the reference image. Its eyes remain ${result.e} with the same appearance and intensity.
+Keep the ground, ${result.f} floor, ${result.m} organic materials, plants, moisture, rocks, particles, background environment, ${result.l} lighting direction, shadows, atmosphere, and color palette exactly matching the provided image reference.
 
-The creature moves naturally according to its real species behavior:
-flying creatures slowly flap their wings and fly,
-running creatures walk and move on land,
-swimming creatures move naturally through water.
+Maintain the same visual style, texture quality, contrast, realism, lighting, and overall look from the provided image reference. Start and continue with the same color palette, atmosphere, and visual tone.
 
-The baby creature slowly leaves the egg and explores the surrounding environment.
-
-Soft ${result.l} filters through the forest canopy. The ground, moss, plants, rocks, moisture, organic materials, particles, shadows, and background environment must remain perfectly consistent with the reference image.
-
-Ultra-realistic macro wildlife photography.
-Extreme macro lens.
-Natural camera movement.
-Shallow depth of field.
-Cinematic realistic lighting.
-High-resolution photorealistic fantasy creature photography.
-8K realistic textures.
-Magical atmosphere.
+Camera movement must be natural and slow, preserving perfect continuity from the reference frame. Maintain shallow depth of field and realistic wildlife documentary photography style.
 
 No music.
 No emotional soundtrack.
-No artificial cinematic audio feeling.
+No artificial cinematic audio tone.
 Only natural environment sounds.
 
-ABSOLUTE CONSISTENCY REQUIRED:
+Ultra-realistic 8K wildlife documentary style.
 
-No changes to creature design.
-No changes to species.
+FINAL SCENE ONLY:
+The baby ${result.c} reaches its giant mother and stays close beside her. The mother protects and watches over the baby naturally. The scene must look like a real captured wildlife moment.
+
+ABSOLUTE CONSISTENCY REQUIRED:
+No mistakes.
+No changes to ${result.c} design.
 No changes to colors.
 No changes to anatomy.
 No changes to body features.
-No changes to egg design.
-No changes to runes.
-No changes to lighting.
+No changes to ${result.l} lighting.
 No changes to environment.
 No extra creatures.
 No unrelated fantasy elements.
-
-The final result must look like a real wildlife documentary capturing the birth of a magical creature.
-
-Everything must feel naturally connected to the reference image with perfect continuity.`;
+Perfect match with the provided image reference.
+Everything must look natural, realistic, and accurately connected.`;
 
     // Setting values to respective textareas
     document.getElementById('output1').value = promptPart1;
